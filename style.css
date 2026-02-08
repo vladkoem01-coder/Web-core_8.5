@@ -1,11 +1,9 @@
 @font-face{
     font-family: 'TTLakes-Regular';
-    src: url("font-family/TTLakes/TTLakes-Regular.woff") format("truetype");
+    src: url("fonts/TTLakes/TTLakes-Regular.ttf") format("truetype")
 }
 
 *{
     font-family:TTLakes-Regular, sans-serif;
     box-sizing: border-box;
 }
-
-.

@@ -1,6 +1,10 @@
-const container = document.querySelector('.container');
-const nextBtn = document.querySelector('.container-box-button-next');
+ const swiper = new Swiper('.swiper', {
+    loop: true,
+    
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
 
-nextBtn.addEventListener('click', () => {
-    container.scrollBy({ left: 250, behavior: 'smooth' });
-});
+  

@@ -28,16 +28,9 @@ const swiper = new Swiper('.swiper', {
   }
 });
 
-const button = document.querySelector('.show-all');
-const swiperContainer = document.querySelector('.swiper');
-const buttonText = button.querySelector('button');
 
-button.addEventListener('click', () => {
-  swiperContainer.classList.toggle('expanded');
+const button = document.getElementById("buttonShowMore");
 
-  if (swiperContainer.classList.contains('expanded')) {
-    buttonText.textContent = 'Скрыть';
-  } else {
-    buttonText.textContent = 'Показать всё';
-  }
+button.addEventListener("click", () => {
+  alert("vse rabotaet");
 });

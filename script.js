@@ -1,36 +1,68 @@
-const swiper = new Swiper('.swiper', {
-  slidesPerView: 'auto',
-  spaceBetween: 16,
+let swiper;
 
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
+function initSwiper() {
+  swiper = new Swiper('.swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
 
-  breakpoints: {
-    768: {
-      slidesPerView: 3,
-      grid: {
-        rows: 2,
-        fill: 'row'
-      },
-      allowTouchMove: false
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
 
-    1120: {
-      slidesPerView: 4,
-      grid: {
-        rows: 2,
-        fill: 'row'
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        allowTouchMove: false
       },
-      allowTouchMove: false
+      1120: {
+        slidesPerView: 4,
+        allowTouchMove: false
+      }
     }
+  });
+}
+
+initSwiper();
+
+
+const wrapper = document.querySelector('.swiper-wrapper');
+const btn = document.getElementById('buttonShowMore');
+
+let isOpen = false;
+
+function initShowMore() {
+
+  // Только для планшета и выше
+  if (window.innerWidth >= 768) {
+
+    const slides = document.querySelectorAll('.swiper-slide');
+
+    if (!slides.length) return;
+
+    const itemHeight = slides[0].offsetHeight;
+    const gap = 16; // должен совпадать с CSS gap
+    const rowsVisible = 2; // показываем 2 строки
+
+    const collapsedHeight = (itemHeight * rowsVisible) + gap;
+
+    wrapper.style.height = collapsedHeight + 'px';
+
+    btn.addEventListener('click', () => {
+
+      if (!isOpen) {
+        wrapper.style.height = wrapper.scrollHeight + 'px';
+        btn.textContent = 'Скрыть';
+      } else {
+        wrapper.style.height = collapsedHeight + 'px';
+        btn.textContent = 'Показать все';
+      }
+
+      isOpen = !isOpen;
+
+    });
+
   }
-});
+}
 
-
-const button = document.getElementById("buttonShowMore");
-
-button.addEventListener("click", () => {
-  alert("vse rabotaet");
-});
+window.addEventListener('load', initShowMore);

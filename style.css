@@ -29,10 +29,12 @@ h1{
 
 .swiper{
     height: 154px;
+    box-sizing: border-box;
 }
 
 .swiper-slide{
     background-color:white;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -53,41 +55,47 @@ h1{
     display: none;
 }
 
+/* Планшет */
+@media (min-width: 768px) {
 
-/* Tablet */
-  @media (min-width: 768px) and (max-width:1120px){
+  .swiper {
+    height: auto;
+    overflow: hidden;
+  }
 
-    .swiper-pagination {
+  .swiper-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(6, auto);
+    gap: 16px;
+    transition: height 0.4s ease;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+  }
+
+  .swiper-pagination {
         display: none;
   }
 
     #show-more{
         display:flex;
         margin-top: 24px;
+    }
+    #buttonShowMore{
+        font-size: 16px;
     }
    #button-show-more:hover{
         color:  #41F6D7;
     }
 
-    .swiper.expanded + #show-more img {
-        transform: rotate(180deg);
-    }
 }
 
 /* Desktop  */
  @media (min-width:1120px){
-    .swiper-pagination {
-        display: none;
+    .swiper-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(8, auto);
+    gap: 16px;
+    transition: height 0.4s ease;
   }
-
-    #show-more{
-        display:flex;
-        margin-top: 24px;
-    }
-
-    #button-show-more:hover{
-        color:  #41F6D7;
-    }
-
-
-}

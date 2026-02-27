@@ -1,68 +1,45 @@
-let swiper;
+document.addEventListener('DOMContentLoaded', () => {
 
-function initSwiper() {
-  swiper = new Swiper('.swiper', {
+  const swiper = new Swiper('.swiper', {
     slidesPerView: 'auto',
     spaceBetween: 16,
-
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
     },
-
-    breakpoints: {
-      768: {
-        slidesPerView: 3,
-        allowTouchMove: false
-      },
-      1120: {
-        slidesPerView: 4,
-        allowTouchMove: false
-      }
-    }
   });
-}
 
-initSwiper();
+  const button = document.getElementById('buttonShowMore');
+  const container = document.querySelector('.swiper');
 
+  const collapsedHeight = 160;
+  let isOpen = false;
 
-const wrapper = document.querySelector('.swiper-wrapper');
-const btn = document.getElementById('buttonShowMore');
+  function updateLayout() {
 
-let isOpen = false;
-
-function initShowMore() {
-
-  // Только для планшета и выше
-  if (window.innerWidth >= 768) {
-
-    const slides = document.querySelectorAll('.swiper-slide');
-
-    if (!slides.length) return;
-
-    const itemHeight = slides[0].offsetHeight;
-    const gap = 16; // должен совпадать с CSS gap
-    const rowsVisible = 2; // показываем 2 строки
-
-    const collapsedHeight = (itemHeight * rowsVisible) + gap;
-
-    wrapper.style.height = collapsedHeight + 'px';
-
-    btn.addEventListener('click', () => {
-
-      if (!isOpen) {
-        wrapper.style.height = wrapper.scrollHeight + 'px';
-        btn.textContent = 'Скрыть';
-      } else {
-        wrapper.style.height = collapsedHeight + 'px';
-        btn.textContent = 'Показать все';
-      }
-
-      isOpen = !isOpen;
-
-    });
-
+    if (window.innerWidth >= 768) {
+      container.style.height = collapsedHeight + 'px';
+      container.style.overflow = 'hidden';
+      button.style.display = 'flex';
+    } else {
+      container.style.height = '';
+      container.style.overflow = '';
+      button.style.display = 'none';
+    }
   }
-}
 
-window.addEventListener('load', initShowMore);
+  button.addEventListener('click', () => {
+    if (!isOpen) {
+      container.style.height = container.scrollHeight + 'px';
+      button.textContent = 'Скрыть';
+    } else {
+      container.style.height = collapsedHeight + 'px';
+      button.textContent = 'Показать всё';
+    }
+    isOpen = !isOpen;
+  });
+
+  updateLayout();
+  window.addEventListener('resize', updateLayout);
+
+});

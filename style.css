@@ -58,14 +58,20 @@ h1{
 /* Планшет */
 @media (min-width: 768px) {
 
-  .swiper {
+  /* .swiper {
     height: auto;
     overflow: hidden;
-  }
+  } */
+
+  .swiper {
+  height: 160px;
+  overflow: hidden;
+  
+}
 
   .swiper-wrapper {
     display: grid !important;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     transition: height 0.4s ease;
   }
@@ -85,17 +91,17 @@ h1{
     #buttonShowMore{
         font-size: 16px;
     }
-   #button-show-more:hover{
+   #buttonShowMore:hover{
         color:  #41F6D7;
     }
 
 }
 
 /* Desktop  */
- @media (min-width:1120px){
-    .swiper-wrapper {
-    display: grid !important;
-    grid-template-columns: repeat(8, auto);
-    gap: 16px;
-    transition: height 0.4s ease;
+ @media (min-width: 1120px) {
+
+  .swiper-wrapper {
+    grid-template-columns: repeat(4, 1fr);
   }
+
+}

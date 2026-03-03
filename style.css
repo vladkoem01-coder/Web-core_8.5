@@ -16,9 +16,9 @@ body{
 }
 
 h1{
-    background: linear-gradient(270deg, #F8F8F8 0%, #FFFFFF 98.61%);
+    background: linear-gradient(90deg, #F8F8F8 1.39%, #FFFFFF 100%);
     font-size: 16px;
-    font-family: TT Lakes;
+    font-family: 'TTLakes-Regular', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -58,8 +58,11 @@ h1{
 
 /* Планшет */
 @media (min-width: 768px) {
+.swiper{
+  display: none;
+}
 
-  .swiper {
+  .grid {
   height: 160px;
   overflow: hidden;
   

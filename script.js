@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const button = document.getElementById('buttonShowMore');
-  const container = document.querySelector('.swiper');
+  const container = document.querySelector('.grid');
 
   const collapsedHeight = 160;
   let isOpen = false;
